@@ -158,6 +158,23 @@ node* reversek(node* &head, int k){
     return prevptr;
 }
 
+void evenAfterOdd(node* &head){
+    node* odd=head;
+    node* even=head->next;
+    node* evenStart=even;
+    while(odd->next!=NULL && even->next!=NULL){
+        
+        odd->next=even->next;
+        odd=odd->next;
+        even->next=odd->next;
+        even=even->next;
+    }
+
+    odd->next=evenStart;
+    if(odd->next!=NULL){
+        even->next=NULL;
+    }
+}
 
 int main(){
 
@@ -177,6 +194,9 @@ display1(head);
 int k=2;
 node* newhead1 = reversek(head,k);
 display1(newhead1);
+// evenAfterOdd(head);
+// display1(newhead1);
+
 
 node* newhead = reverse1(head);
 display1(newhead);
